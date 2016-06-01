@@ -36,8 +36,6 @@
 </li>
 <li><p>F：怎么不让在首页的时候整篇文章都显示出来？<br>Q：文章截断，在需要截断的地方插入 <code>&lt;!--more--&gt;</code></p>
 </li>
-<li><p>F：怎么生成标签云？<br>Q：</p>
-</li>
 </ul>
 ]]></content>
     </entry>
