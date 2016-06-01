@@ -100,7 +100,7 @@
 拥有一个Github账号
 
 安装hexo并初始化在想要建站的位置右键打开菜单选择 ‘Git Bash Here’，并输入npm install -g hexo-cli```123在执行完之后继续执行以下初始化命令```hexo init .  #. 表示在当前文件夹执行初始化npm ins">
-<meta property="og:updated_time" content="2016-06-01T03:17:55.954Z">
+<meta property="og:updated_time" content="2016-06-01T03:19:57.201Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用hexo远程部署到Github搭建个人博客">
 <meta name="twitter:description" content="搭建准备工作
@@ -300,7 +300,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g </span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
 <p>在执行完之后在浏览器输入地址<code>http://localhost:4000/</code>。</p>
 <h3 id="部署到Github"><a href="#部署到Github" class="headerlink" title="部署到Github"></a>部署到Github</h3><h4 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h4><p>本机的ssh已加到Github上，<a href="http://blog.csdn.net/binyao02123202/article/details/20130891" target="_blank" rel="external">添加ssh教程</a>。</p>
-<h3 id="开始部署"><a href="#开始部署" class="headerlink" title="开始部署"></a>开始部署</h3><p>在Github上新建一个项目（repository）并配置<code>_config.yml</code>文件的<code>deploy:</code>属性</p>
+<h5 id="开始部署"><a href="#开始部署" class="headerlink" title="开始部署"></a>开始部署</h5><p>在Github上新建一个项目（repository）并配置<code>_config.yml</code>文件的<code>deploy:</code>属性</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## Deployment</span></span><br><span class="line"><span class="comment">### Docs: https://hexo.io/docs/deployment.html</span></span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repository: <span class="comment">##这里为项目的Git地址</span></span><br><span class="line">  branch: gh-pages <span class="comment">##要部署到的项目的分支(branch)</span></span><br></pre></td></tr></table></figure>
 <p>在配置完成之后执行以下命令运行</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
@@ -409,7 +409,7 @@
                src="http://7xs7mg.com1.z0.glb.clouddn.com/%E6%80%AA%E5%85%BD.jpg"
                alt="番薯" />
           <p class="site-author-name" itemprop="name">番薯</p>
-          <p class="site-description motion-element" itemprop="description"></p>
+          <p class="site-description motion-element" itemprop="description">不写博客的程序员都是咸鱼</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
@@ -436,6 +436,17 @@
 
         <div class="links-of-author motion-element">
           
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/NaughtBoy" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
         </div>
 
         
@@ -453,7 +464,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建准备工作"><span class="nav-number">1.</span> <span class="nav-text">搭建准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装hexo并初始化"><span class="nav-number">2.</span> <span class="nav-text">安装hexo并初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关配置"><span class="nav-number">3.</span> <span class="nav-text">相关配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#主题设置"><span class="nav-number">3.1.</span> <span class="nav-text">主题设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他配置"><span class="nav-number">3.2.</span> <span class="nav-text">其他配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署"><span class="nav-number">4.</span> <span class="nav-text">部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#部署到本地"><span class="nav-number">4.1.</span> <span class="nav-text">部署到本地</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署到Github"><span class="nav-number">4.2.</span> <span class="nav-text">部署到Github</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#前置条件"><span class="nav-number">4.2.1.</span> <span class="nav-text">前置条件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开始部署"><span class="nav-number">4.3.</span> <span class="nav-text">开始部署</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#F-amp-Q"><span class="nav-number">5.</span> <span class="nav-text">F&Q</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建准备工作"><span class="nav-number">1.</span> <span class="nav-text">搭建准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装hexo并初始化"><span class="nav-number">2.</span> <span class="nav-text">安装hexo并初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关配置"><span class="nav-number">3.</span> <span class="nav-text">相关配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#主题设置"><span class="nav-number">3.1.</span> <span class="nav-text">主题设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他配置"><span class="nav-number">3.2.</span> <span class="nav-text">其他配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署"><span class="nav-number">4.</span> <span class="nav-text">部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#部署到本地"><span class="nav-number">4.1.</span> <span class="nav-text">部署到本地</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署到Github"><span class="nav-number">4.2.</span> <span class="nav-text">部署到Github</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#前置条件"><span class="nav-number">4.2.1.</span> <span class="nav-text">前置条件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#开始部署"><span class="nav-number">4.2.1.1.</span> <span class="nav-text">开始部署</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#F-amp-Q"><span class="nav-number">5.</span> <span class="nav-text">F&Q</span></a></li></ol></div>
             
           </div>
         </section>
