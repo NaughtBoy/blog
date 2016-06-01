@@ -5,7 +5,7 @@
 # Site
 title: 番薯的小窝
 subtitle:
-description:
+description: 不写博客的程序员都是咸鱼
 author: 番薯
 language: zh-Hans
 timezone:
@@ -15,8 +15,8 @@ avatar: http://7xs7mg.com1.z0.glb.clouddn.com/%E6%80%AA%E5%85%BD.jpg
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: http://naughtboy.github.io/blog/
 root: /blog/
-permalink: :year/:month/:day/:title/
-permalink_defaults:
+permalink: :title/
+permalink_defaults:	
 
 # Directory
 source_dir: source
@@ -29,7 +29,7 @@ i18n_dir: :lang
 skip_render:
 
 # Writing
-new_post_name: :title.md # File name of new posts
+new_post_name: :year-:month-:day-:title.md # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
