@@ -72,3 +72,16 @@ deploy:
   type: git
   repository: https://github.com/NaughtBoy/blog.git
   branch: gh-pages
+
+#多说的配置
+duoshuo_shortname: fanshu-blog
+# 多说热评文章 true 或者 false
+duoshuo_hotartical: true
+
+#本地搜索配置
+search:
+  path: search.xml
+  field: post
+  
+#百度分析ID
+baidu_analytics: a53a730caf6eaeeb384f3855086d52f7
