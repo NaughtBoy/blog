@@ -13,7 +13,7 @@ avatar: http://7xs7mg.com1.z0.glb.clouddn.com/%E6%80%AA%E5%85%BD.jpg
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://naughtboy.github.io/blog/
+url: http://naughtboy.github.io/
 root: /blog/
 permalink: :title/
 permalink_defaults:	
@@ -47,8 +47,8 @@ highlight:
 # Category & Tag
 default_category: uncategorized
 category_map:
-tag_map:
-
+tag_map: 
+  
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
 ## You can customize the date format as defined in

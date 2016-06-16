@@ -27,10 +27,10 @@ rss:
 menu:
   home: /
   #categories: /categories
-  #about: /about
   archives: /archives
   tags: /tags
   #commonweal: /404.html
+  about: /about
 
 
 # Enable/Disable menu icons.
@@ -42,11 +42,11 @@ menu_icons:
   enable: true
   #KeyMapsToMenuItemKey: NameOfTheIconFromFontAwesome
   home: home
-  about: user
   categories: th
   tags: tags
   archives: archive
   commonweal: heartbeat
+  about: user
 
 
 
