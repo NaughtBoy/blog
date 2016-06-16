@@ -68,7 +68,7 @@
 <link href="/blog/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="RxJava," />
 
 
 
@@ -84,16 +84,39 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta name="description" content="原文：http://nerds.weddingpartyapp.com/tech/2014/12/24/implementing-an-event-bus-with-rxjava-rxbus/
+
+（译者注：文中的EventBus多指事件总线这种设计模式，而非EventBus这个具体的类库。） 
+这一篇文章有三个部分:
+
+快速了解什么是EventBus
+使用RxJava实现EventBus
+对Rx">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://naughtboy.github.io/hello-world/index.html">
+<meta property="og:title" content="使用RxJava实现EventBus——RxBus（翻译）">
+<meta property="og:url" content="http://naughtboy.github.io/使用RxJava实现EventBus——RxBus（翻译）/index.html">
 <meta property="og:site_name" content="番薯的小窝">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
-<meta property="og:updated_time" content="2016-06-01T07:29:48.434Z">
+<meta property="og:description" content="原文：http://nerds.weddingpartyapp.com/tech/2014/12/24/implementing-an-event-bus-with-rxjava-rxbus/
+
+（译者注：文中的EventBus多指事件总线这种设计模式，而非EventBus这个具体的类库。） 
+这一篇文章有三个部分:
+
+快速了解什么是EventBus
+使用RxJava实现EventBus
+对Rx">
+<meta property="og:image" content="http://nerds.weddingpartyapp.com/images/posts/rxbus_simple.gif">
+<meta property="og:updated_time" content="2016-06-16T09:38:58.740Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta name="twitter:title" content="使用RxJava实现EventBus——RxBus（翻译）">
+<meta name="twitter:description" content="原文：http://nerds.weddingpartyapp.com/tech/2014/12/24/implementing-an-event-bus-with-rxjava-rxbus/
+
+（译者注：文中的EventBus多指事件总线这种设计模式，而非EventBus这个具体的类库。） 
+这一篇文章有三个部分:
+
+快速了解什么是EventBus
+使用RxJava实现EventBus
+对Rx">
+<meta name="twitter:image" content="http://nerds.weddingpartyapp.com/images/posts/rxbus_simple.gif">
 
 
 
@@ -111,7 +134,7 @@
   };
 </script>
 
-  <title> Hello World | 番薯的小窝 </title>
+  <title> 使用RxJava实现EventBus——RxBus（翻译） | 番薯的小窝 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -274,7 +297,7 @@
             
             
               
-                Hello World
+                使用RxJava实现EventBus——RxBus（翻译）
               
             
           </h1>
@@ -286,19 +309,38 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-31T14:39:49+08:00" content="2016-05-31">
-              2016-05-31
+            <time itemprop="dateCreated" datetime="2016-06-16T17:35:44+08:00" content="2016-06-16">
+              2016-06-16
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/blog/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="hello-world/" itemprop="commentsCount"></span>
+                <a href="/blog/使用RxJava实现EventBus——RxBus（翻译）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="使用RxJava实现EventBus——RxBus（翻译）/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -321,16 +363,33 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+        <blockquote>
+<p>原文：<a href="http://nerds.weddingpartyapp.com/tech/2014/12/24/implementing-an-event-bus-with-rxjava-rxbus/" target="_blank" rel="external">http://nerds.weddingpartyapp.com/tech/2014/12/24/implementing-an-event-bus-with-rxjava-rxbus/</a></p>
+</blockquote>
+<p><strong>（译者注：文中的EventBus多指事件总线这种设计模式，而非<a href="https://github.com/greenrobot/EventBus" target="_blank" rel="external"><code>EventBus</code></a>这个具体的类库。） </strong></p>
+<p>这一篇文章有三个部分:</p>
+<ul>
+<li>快速了解什么是EventBus</li>
+<li>使用RxJava实现EventBus</li>
+<li>对RxBus的一些想法</li>
+</ul>
 <a id="more"></a>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+<p>“RxBus”不是一种类库。使用RxJava实现EventBus是非常简单的，而且不需要担心会让你的类库变大。</p>
+<h2 id="第一部分：什么是Event-Bus"><a href="#第一部分：什么是Event-Bus" class="headerlink" title="第一部分：什么是Event Bus"></a>第一部分：什么是Event Bus</h2><p>让我们来讨论下两种相似的东西：观察者模式和Pub-Sub模式。<br>（译者注：Pub-Sub，即pubish-subscribe，发布-订阅）</p>
+<h3 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h3><p>这种模式的意思是：你的一个类或者主要对象（Observable）将一个相关的信息通知（Event）给其他所有感兴趣的类或对象（Observer）。</p>
+<h3 id="Pub-Sub模式"><a href="#Pub-Sub模式" class="headerlink" title="Pub-Sub模式"></a>Pub-Sub模式</h3><p>该模式的目标和观察者模式的目的是一样的，即：你想让其它的一些类知道或了解到某些事件的发生。<br>观察者模式和Pub-Sub模式有一个重要的区别：Pub-Sub模式的关注点在于把广播发出去，而观察者模式并不在乎消息是发到哪里去了，只是在乎消息是否已经发出去了，换句话说，被观察者（ 或发布者）不需要知道谁是观察者（或订阅者）。</p>
+<h3 id="为什么要匿名？"><a href="#为什么要匿名？" class="headerlink" title="为什么要匿名？"></a>为什么要匿名？</h3><p>计算机编程里面一个好词汇叫“解耦”。你应该在你的程序设计里面尽可能地保持低耦合度。<br>通常情况下，你希望发布者（Publisher）都能知道每一个需要通知的订阅者（ subscriber），这样才能在事件或者消息准备好了的时候准确通知到这些订阅者。当在EventBus 里面，发布者并不需要知道每一个需要通知的订阅者，这种独立性有助于解耦，因为发布者和订阅者不需要通过逻辑编码来建立它们的关系。<br>话句话说，在你编写代码的每一个地方尽量有意识地解耦。</p>
+<h3 id="怎么匿名？"><a href="#怎么匿名？" class="headerlink" title="怎么匿名？"></a>怎么匿名？</h3><p>那么，在Pub-Sub模式里面自然就出现了这么一个问题：怎么实现发表者（publisher）和订阅者（ Subscriber）之间的匿名？一个简单的实现方法就是创建一个中间人（ middleman）并让这个中间人负责所有的通信。而EventBus就是中间人的一种。<br>在Android里面，通常使用两个EventBus的类库：Square 的<a href="http://square.github.io/otto/" target="_blank" rel="external"><code>Otto</code></a> 和 Green Robot 的<a href="https://github.com/greenrobot/EventBus" target="_blank" rel="external"><code>EventBus</code></a>。网上有大量的关于如何把它们应用到你的App里面的文章。</p>
+<h2 id="使用RxJava实现EventBus"><a href="#使用RxJava实现EventBus" class="headerlink" title="使用RxJava实现EventBus"></a>使用RxJava实现EventBus</h2><p>我以前发表过一篇有关 <a href="https://github.com/kaushikgopal/RxJava-Android-Samples" target="_blank" rel="external">RxJava for Android</a>的文章,我会继续在那篇文章写完具体的实现。以下是实现中相关的一部分：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// 这就是那个中间类</span><br><span class="line">public class RxBus &#123;</span><br><span class="line"></span><br><span class="line">    private final Subject&lt;Object, Object&gt; _bus = new SerializedSubject&lt;&gt;(PublishSubject.create());</span><br><span class="line"></span><br><span class="line"> public void send(Object o) &#123;</span><br><span class="line">        _bus.onNext(o);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">    public Observable&lt;Object&gt; toObserverable() &#123;</span><br><span class="line">        return _bus;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>现在，你有了一个可以用的EventBus了。<br>下面是发送一个事件的代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@OnClick(R.id.btn_demo_rxbus_tap)</span><br><span class="line">public void onTapButtonClicked() &#123;</span><br><span class="line"></span><br><span class="line">    _rxBus.send(new TapEvent());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>下面是你在<code>fragment</code>、<code>services</code>等需要监听这些事件的地方的代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 这个_rxBus 对象实例是那个发布事件的对象</span><br><span class="line">_rxBus.toObserverable().subscribe(new Action1&lt;Object&gt;() &#123;</span><br><span class="line">  @Override</span><br><span class="line">  public void call(Object event) &#123;</span><br><span class="line">    if(event instanceof TapEvent) &#123;</span><br><span class="line">      _showTapText();</span><br><span class="line">    &#125;else if(event instanceof SomeOtherEvent) &#123;</span><br><span class="line">      _doSomethingElse();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>在这个例子里，我们在顶部的绿色<code>fragment</code>发布了一个事件，并在通过总线在底部蓝色的<code>fragment</code>进行监听。</p>
+<p><a href="http://nerds.weddingpartyapp.com/images/posts/rxbus_simple.gif" title="demo" target="_blank" rel="external"><img src="http://nerds.weddingpartyapp.com/images/posts/rxbus_simple.gif" alt="demo" title="demo"></a></p>
+<h2 id="对RxBus的一些想法"><a href="#对RxBus的一些想法" class="headerlink" title="对RxBus的一些想法"></a>对RxBus的一些想法</h2><h3 id="Dead-Events（死亡事件：没有订阅者的事件）"><a href="#Dead-Events（死亡事件：没有订阅者的事件）" class="headerlink" title="Dead Events（死亡事件：没有订阅者的事件）"></a>Dead Events（死亡事件：没有订阅者的事件）</h3><p>有某些情况下，知道当前有没有观察者（Observers）在监听总线（Bus）是很有用的。比如，在你<a href="https://markhudnall.com/2013/11/13/gcm-foreground-and-background/" target="_blank" rel="external">用EventBus处理你的消息推送</a>，而且你不想App在前台的时候发送一个 push notification（推送通知），那么监听一个 <a href="https://github.com/square/otto/blob/master/otto/src/main/java/com/squareup/otto/DeadEvent.java" target="_blank" rel="external">Dead Event</a>就很重要了。<br>又比如我们最近发布的 Wedding Party（译者注：原文，目测是一款App），我们增加了“消息”的功能。如果用户打开App（至少有一个以上对bus的监听者），我们不会发送push notification。但如果App在后台的话，我们会发送一个能让他们知道聊天信息的push notification。要是一个事件被发送到Event Bus中，如果当前没有监听者，就会返回一个Dead Event。如果我们得到一个返回的Dead Event的话就会发送一个 Push Notification。<br>你该怎么用 RxBus实现Dead Event呢？<br>其实很简单，<code>Subject</code>类中有一个很有用的<code>hasObservers()</code>方法就可以实现了。这个方法是在<a href="https://github.com/ReactiveX/RxJava/pull/1802" target="_blank" rel="external">1.x的版本被加到RxJava</a>的，所以至少在当前最后的版本（0.23.0）的RxAndroid中可以找到这个方法。</p>
+<h3 id="那么我应该使用RxBus而不是-Otto-Event-Bus-吗？"><a href="#那么我应该使用RxBus而不是-Otto-Event-Bus-吗？" class="headerlink" title="那么我应该使用RxBus而不是 Otto/Event Bus 吗？"></a>那么我应该使用RxBus而不是 Otto/Event Bus 吗？</h3><p>如果你只是先在你的Android App里面简单地应用Event Bus，你最好还是使用Otto（更推荐）或者<a href="https://github.com/greenrobot/EventBus" target="_blank" rel="external">Event Bus</a>。Otto 拥有更加简洁的由注解驱动的Api，使用起来会更加地方便。<br>如果你熟悉Rx，而且已经在你的项目里面使用了RxJava，而且又想摆脱多余的库，那么你一定要试试RxBus。</p>
+<blockquote>
+<p>译者注：英文水平有限，恳请看到该文章的诸位帮忙校对下，看看哪里出错了。</p>
+</blockquote>
 
       
     </div>
@@ -350,18 +409,24 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/blog/tags/RxJava/" rel="tag">#RxJava</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/blog/Rx系列笔记/" rel="next" title="Rx系列学习笔记">
+                <i class="fa fa-chevron-left"></i> Rx系列学习笔记
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/blog/利用hexo远程部署到Github搭建个人博客/" rel="prev" title="利用hexo远程部署到Github搭建个人博客">
-                利用hexo远程部署到Github搭建个人博客 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -390,8 +455,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="hello-world/"
-           data-title="Hello World" data-url="http://naughtboy.github.io/blog/hello-world/">
+      <div class="ds-thread" data-thread-key="使用RxJava实现EventBus——RxBus（翻译）/"
+           data-title="使用RxJava实现EventBus——RxBus（翻译）" data-url="http://naughtboy.github.io/blog/使用RxJava实现EventBus——RxBus（翻译）/">
       </div>
     
   </div>
@@ -493,7 +558,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一部分：什么是Event-Bus"><span class="nav-number">1.</span> <span class="nav-text">第一部分：什么是Event Bus</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#观察者模式"><span class="nav-number">1.1.</span> <span class="nav-text">观察者模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pub-Sub模式"><span class="nav-number">1.2.</span> <span class="nav-text">Pub-Sub模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要匿名？"><span class="nav-number">1.3.</span> <span class="nav-text">为什么要匿名？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#怎么匿名？"><span class="nav-number">1.4.</span> <span class="nav-text">怎么匿名？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用RxJava实现EventBus"><span class="nav-number">2.</span> <span class="nav-text">使用RxJava实现EventBus</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对RxBus的一些想法"><span class="nav-number">3.</span> <span class="nav-text">对RxBus的一些想法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Dead-Events（死亡事件：没有订阅者的事件）"><span class="nav-number">3.1.</span> <span class="nav-text">Dead Events（死亡事件：没有订阅者的事件）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#那么我应该使用RxBus而不是-Otto-Event-Bus-吗？"><span class="nav-number">3.2.</span> <span class="nav-text">那么我应该使用RxBus而不是 Otto/Event Bus 吗？</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
